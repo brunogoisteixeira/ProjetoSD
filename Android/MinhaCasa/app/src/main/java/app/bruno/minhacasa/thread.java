@@ -15,7 +15,7 @@ public class thread extends Thread {
         try{
 
 
-            Socket socket = new Socket("192.168.20.250", 8080);
+            Socket socket = new Socket("192.168.0.250", 8080);
 
             DataOutputStream EnviarParaServidor = new DataOutputStream(socket.getOutputStream());
 
@@ -26,6 +26,7 @@ public class thread extends Thread {
 
             //EnviarParaServidor.writeBytes(comodo);
             EnviarParaServidor.writeBytes(status);
+            EnviarParaServidor.writeBytes(comodo);
 
             //  EnviarParaServidor.writeByte(Integer.parseInt(comodo));
 
@@ -37,4 +38,5 @@ public class thread extends Thread {
 
         }
     }
+
 }

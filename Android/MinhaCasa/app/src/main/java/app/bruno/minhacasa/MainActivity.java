@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         Lista = new ArrayList<ComodosCasa>();
         Lista.add(new ComodosCasa("Quarto Principal",R.drawable.ic_quarto,"4 Aparelhos","28º"));
-        Lista.add(new ComodosCasa("Quarto 01",R.drawable.quarto01,"12 Aparelhos","28º"));
+        //Lista.add(new ComodosCasa("Quarto 01",R.drawable.quarto01,"12 Aparelhos","28º"));
         Lista.add(new ComodosCasa("Quarto 02",R.drawable.quarto02,"12 Aparelhos","28º"));
         Lista.add(new ComodosCasa("Quarto 03",R.drawable.quarto03,"15 Aparelhos","28º"));
         Lista.add(new ComodosCasa("Sala de TV",R.drawable.salatv,"10 Aparelhos","25º"));
@@ -53,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
                 //Toast.makeText(getBaseContext(),"O Comodo "+Comodo(position).toString()+ " Ainda não foi implementado", Toast.LENGTH_LONG).show();
 
+                //CHAMO A TELA DE LIGAR E DESLIGAR LED E PASSO O ID DO COMODO
                 Intent intent = new Intent(getBaseContext(), ActivityLigaDesliga.class);
-                intent.putExtra("comodo",Comodo(position).toString());
+
+                intent.putExtra("comodo",Comodo(position));
                 startActivity(intent);
             }
         });
@@ -71,46 +73,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String Comodo(int posicao){
-        String comodo =  "Geral";
+        String IdComodo =  "Geral";
         switch (posicao){
             case 0:
-                comodo = "Quarto Principal";
+                IdComodo = "1";
                 break;
             case 1:
-                comodo = "Quarto 01";
+                IdComodo = "2";
                 break;
             case 2:
-                comodo = "Quarto 02";
+                IdComodo = "03";
                 break;
             case 3:
-                comodo = "Quarto 03";
+                IdComodo = "04";
                 break;
             case 4:
-                comodo = "Sala de TV";
+                IdComodo = "05";
                 break;
             case 5:
-                comodo = "Sala de Jantar";
+                IdComodo = "06";
                 break;
             case 6:
-                comodo = "Sala de Estudos";
+                IdComodo = "07";
                 break;
             case 7:
-                comodo = "Cozinha";
+                IdComodo = "08";
                 break;
             case 8:
-                comodo = "Banheiro 01";
+                IdComodo = "09";
                 break;
             case 9:
-                comodo = "Bnnheiro Switch";
+                IdComodo = "10";
                 break;
             case 10:
-                comodo = "Garegem";
+                IdComodo = "11";
                 break;
             case 11:
-                comodo = "Sala de Estudos";
+                IdComodo = "12";
                 break;
         }
-        return comodo;
+        return IdComodo;
     }
 
     @Override
