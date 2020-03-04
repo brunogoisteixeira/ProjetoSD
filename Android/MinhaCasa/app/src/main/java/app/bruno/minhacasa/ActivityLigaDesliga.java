@@ -149,7 +149,7 @@ public class ActivityLigaDesliga extends AppCompatActivity {
                     break;
                 case 9:
                     idTela.setText("BANHEIRO SWITCH");
-                    Toast.makeText(getApplicationContext(),"OPÇÃO AINDA NÃO IMPLEMENTADA ",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"OPÇÃO AINDA NÃO IMPLEMENTADA ",Toast.LENGTH_SHORT).show(;)
                     break;
 
 
