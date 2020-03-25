@@ -1,6 +1,6 @@
 package app.bruno.minhacasa;
 
-import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +13,10 @@ import android.widget.ToggleButton;
 
 public class ActivityLigaDesliga extends AppCompatActivity {
 
+    public static String Status;
+    int quantidadeAparelhos = 0;
+    String converterQuantidadeAparelhos = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +27,53 @@ public class ActivityLigaDesliga extends AppCompatActivity {
         final ToggleButton ventilador = (ToggleButton) findViewById(R.id.tbVentilador);
         final ToggleButton portas = (ToggleButton) findViewById(R.id.tbPortas);
         final Switch desligaTudo = (Switch) findViewById(R.id.swDesligaTudo);
-        TextView idTela = (TextView) findViewById(R.id.txtIdTela);
+        final TextView idTela = (TextView) findViewById(R.id.txtIdTela);
+
+
+
+
+        threadClienteBroadCastServidor m = new threadClienteBroadCastServidor("A");
+       // m.run();
+        try{
+           /// Thread.sleep(2000);
+           // m.join();
+            //      Toast.makeText(getBaseContext(),"Entrei1 ",Toast.LENGTH_LONG).show();
+
+        }catch (Exception e ){
+
+        }
+
+
+
+
+
+        //Valor do status separdo pelo split
+       /* String array[] = Status.split(";");
+        Toast.makeText(getApplicationContext(),"Array na posição "+Status,Toast.LENGTH_LONG).show();
+
+
+        if(array[0].equalsIgnoreCase("1")){
+            luz.setChecked(true);
+        }else{
+            luz.setChecked(false);
+        }
+        if(array[1].equalsIgnoreCase("2")){
+            ligarLed2.setChecked(true);
+        }else{
+            ligarLed2.setChecked(false);
+        }
+        if(array[2].equalsIgnoreCase("4")){
+            ligarLed3.setChecked(true);
+        }else{
+            ligarLed3.setChecked(false);
+        }
+        if(array[3].equalsIgnoreCase("6")){
+            ligarLed4.setChecked(true);
+        }else{
+            ligarLed4.setChecked(false);
+        }*/
+
+
 
         //RECEBER DO QUARTO QUE DESEJO APAGAR A UZ
         Bundle receberId = getIntent().getExtras();
@@ -33,6 +83,7 @@ public class ActivityLigaDesliga extends AppCompatActivity {
             //Toast.makeText(getApplicationContext(),"Estou na tela de id "+valorConvertido,Toast.LENGTH_LONG).show();
             switch (valorConvertido){ //APAO DE ACORDO COM O QUATO QUE EU QUERO
                 case 1:
+                    //final String array[] = Status.split(";");//Separo o split aqui
                     //Liga Luzes
                     idTela.setText("QUARTO PRINCIPAL");
                     luz.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -40,16 +91,20 @@ public class ActivityLigaDesliga extends AppCompatActivity {
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             final Button statusLuz = (Button) findViewById(R.id.btnEstadoLuz);
 
-                            if (isChecked) {
+                            if ((isChecked) ) {//&& (array[0].equalsIgnoreCase("1"))
+                                quantidadeAparelhos++;
+                                luz.setChecked(true);
                                 statusLuz.setVisibility(View.VISIBLE);
-                                thread a = new thread("1", "1");
+                                classThreadConexao a = new classThreadConexao("1","5");
+                                //Lista.add(new ComodosCasa("Quarto Principal",R.drawable.ic_quarto,"4 Aparelhos","28º"));
                                 a.start();
                                 desligaTudo.setChecked(false);
 
                             } else {
-
-                                thread a = new thread("0", "1");
+                                quantidadeAparelhos = 0;
+                                classThreadConexao a = new classThreadConexao("0","5");
                                 a.start();
+                                luz.setChecked(false);
                                 statusLuz.setVisibility(View.INVISIBLE);
                             }
                         }
@@ -64,11 +119,11 @@ public class ActivityLigaDesliga extends AppCompatActivity {
                             final Button statusLuz = (Button) findViewById(R.id.btnEstadoLuz);
                             if (isChecked) {
                                 statusLuz.setVisibility(View.VISIBLE);
-                                thread a = new thread("2", "1");
+                                classThreadConexao a = new classThreadConexao("2", "1");
                                 a.start();
                                 desligaTudo.setChecked(false);
                             } else {
-                                thread a = new thread("3", "1");
+                                classThreadConexao a = new classThreadConexao("3", "1");
                                 a.start();
                                 statusLuz.setVisibility(View.INVISIBLE);
                             }
@@ -84,11 +139,11 @@ public class ActivityLigaDesliga extends AppCompatActivity {
                             final Button statusLuz = (Button) findViewById(R.id.btnEstadoLuz);
                             if (isChecked) {
                                 statusLuz.setVisibility(View.VISIBLE);
-                                thread a = new thread("4", "1");
+                                classThreadConexao a = new classThreadConexao("4", "1");
                                 a.start();
                                 desligaTudo.setChecked(false);
                             } else {
-                                thread a = new thread("5", "1");
+                                classThreadConexao a = new classThreadConexao("5", "1");
                                 a.start();
                                 statusLuz.setVisibility(View.INVISIBLE);
                             }
@@ -104,11 +159,11 @@ public class ActivityLigaDesliga extends AppCompatActivity {
                             final Button statusLuz = (Button) findViewById(R.id.btnEstadoLuz);
                             if (isChecked) {
                                 statusLuz.setVisibility(View.VISIBLE);
-                                thread a = new thread("6", "1");
+                                classThreadConexao a = new classThreadConexao("6", "1");
                                 a.start();
                                 desligaTudo.setChecked(false);
                             } else {
-                                thread a = new thread("7", "1");
+                                classThreadConexao a = new classThreadConexao("7", "1");
                                 a.start();
                                 statusLuz.setVisibility(View.INVISIBLE);
                             }
@@ -124,11 +179,11 @@ public class ActivityLigaDesliga extends AppCompatActivity {
                             final Button statusLuz = (Button) findViewById(R.id.btnEstadoLuz);
                             if (isChecked) {
                                 statusLuz.setVisibility(View.VISIBLE);
-                                thread a = new thread("8", "1");
+                                classThreadConexao a = new classThreadConexao("8", "1");
                                 a.start();
                                 desligaTudo.setChecked(false);
                             } else {
-                                thread a = new thread("9", "1");
+                                classThreadConexao a = new classThreadConexao("9", "1");
                                 a.start();
                                 statusLuz.setVisibility(View.INVISIBLE);
                             }

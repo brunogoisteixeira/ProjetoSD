@@ -17,7 +17,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<ComodosCasa> Lista;
+    static ArrayList<ComodosCasa> Lista;
+    static String aparelhos, temperatura;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         final ListView listaComodos = (ListView) findViewById(R.id.idListaComodos);
 
         Lista = new ArrayList<ComodosCasa>();
-        Lista.add(new ComodosCasa("Quarto Principal",R.drawable.ic_quarto,"4 Aparelhos","28º"));
+        Lista.add(new ComodosCasa("Quarto Principal",R.drawable.ic_quarto,aparelhos,temperatura));
         //Lista.add(new ComodosCasa("Quarto 01",R.drawable.quarto01,"12 Aparelhos","28º"));
         Lista.add(new ComodosCasa("Quarto 02",R.drawable.quarto02,"12 Aparelhos","28º"));
         Lista.add(new ComodosCasa("Quarto 03",R.drawable.quarto03,"15 Aparelhos","28º"));

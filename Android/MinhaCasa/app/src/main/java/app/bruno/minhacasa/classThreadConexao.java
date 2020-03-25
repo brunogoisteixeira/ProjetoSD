@@ -3,11 +3,11 @@ package app.bruno.minhacasa;
 import java.io.DataOutputStream;
 import java.net.Socket;
 
-public class thread extends Thread {
+public class classThreadConexao extends Thread {
     String status;
     String comodo;
 
-    public thread(String status, String comodo){
+    public classThreadConexao(String status, String comodo){
         this.status = status;
         this.comodo = comodo;
     }
@@ -26,7 +26,6 @@ public class thread extends Thread {
 
             //EnviarParaServidor.writeBytes(comodo);
             EnviarParaServidor.writeBytes(status);
-            EnviarParaServidor.writeBytes(comodo);
 
             //  EnviarParaServidor.writeByte(Integer.parseInt(comodo));
 
